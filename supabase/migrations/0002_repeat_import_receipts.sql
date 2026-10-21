@@ -1,0 +1,1 @@
+alter table import_runs drop constraint import_runs_external_key_digest_key;

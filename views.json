@@ -1,13 +1,44 @@
 [
   {
     "name": "week",
-    "title": "This week",
-    "subtitle": "Document Generation for Claude Code: what needs attention, rendered by npm run view",
+    "title": "Document production week",
+    "subtitle": "Read-only work queue. Change records through the agent.",
     "sections": [
       {
+        "title": "Due work",
+        "sql": "select name,template,owner,due_date,readiness,privacy from job_register where status='open' order by due_date"
+      },
+      {
         "title": "Needs attention",
-        "note": "TODO(author): point this at the industry's attention view (overdue, stuck, quiet).",
-        "sql": "select 'replace me' as item, 'TODO(author)' as why"
+        "sql": "select name,owner,issue from attention order by name,issue"
+      }
+    ]
+  },
+  {
+    "name": "quality",
+    "title": "Template and output reviews",
+    "sections": [
+      {
+        "title": "Template approval",
+        "sql": "select name,owner,current_version,readiness,review_due from template_register order by name"
+      },
+      {
+        "title": "Output evidence",
+        "sql": "select name,template,version,data_version,decision,superseded from output_register order by created_at desc"
+      }
+    ]
+  },
+  {
+    "name": "owners",
+    "title": "Owner workload and privacy",
+    "sections": [
+      {
+        "title": "Workload",
+        "sql": "select * from owner_workload order by overdue desc,owner"
+      },
+      {
+        "title": "Retention decisions",
+        "sql": "select name,owner,status,retention_review from jobs where privacy='personal' order by retention_review nulls first"
       }
     ]
   }

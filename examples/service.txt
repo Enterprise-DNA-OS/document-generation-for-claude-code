@@ -1,0 +1,4 @@
+Service confirmation for {{ACCOUNT_NAME}}
+Reference: {{REFERENCE}}
+{{TableStart:SERVICES}}{{DESCRIPTION}}: {{HOURS}} hours
+{{TableEnd:SERVICES}}Contact: {{CONTACT_NAME}}

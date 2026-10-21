@@ -1,11 +1,55 @@
 [
   {
-    "name": "example",
-    "title": "TODO(author): the first document this industry must produce",
-    "for_each": "select gen_random_uuid() as id, 'Example' as name",
+    "name": "job-packet",
+    "title": "Document job review packet",
+    "for_each": "select id,name from jobs",
     "file": "name",
     "sections": [
-      { "title": "Details", "sql": "select 'replace me' as item, $1::text as record_id" }
+      {
+        "title": "Job",
+        "sql": "select name,template,owner,due_date,status,readiness,privacy from job_register where id=$1"
+      },
+      {
+        "title": "Evidence and purpose",
+        "sql": "select purpose,accuracy_evidence,accuracy_version,data_version,retention_review from jobs where id=$1"
+      },
+      {
+        "title": "Output review history",
+        "sql": "select id,version,data_version,sha256,decision,reviewer,superseded from output_register where job_id=$1 order by created_at"
+      }
+    ]
+  },
+  {
+    "name": "template-specification",
+    "title": "Template specification and approval",
+    "for_each": "select id,name from templates",
+    "file": "name",
+    "sections": [
+      {
+        "title": "Versions",
+        "sql": "select version,body,editor,note,source_format,source_hash from template_versions where template_id=$1 order by version"
+      },
+      {
+        "title": "Decisions",
+        "sql": "select v.version,r.reviewer,r.decision,r.evidence,r.review_due from template_reviews r join template_versions v on v.id=r.version_id where v.template_id=$1 order by r.created_at"
+      }
+    ]
+  },
+  {
+    "name": "retention-record",
+    "title": "Personal-information retention review",
+    "for_each": "select id,name from jobs where privacy='personal'",
+    "file": "name",
+    "sections": [
+      {
+        "title": "Review facts",
+        "note": "The operator chooses the retention period. This record is not a legal compliance certificate.",
+        "sql": "select name,status,purpose,retention_review,accuracy_evidence from jobs where id=$1"
+      },
+      {
+        "title": "Stored output copies",
+        "sql": "select id,created_at,sha256 from outputs where job_id=$1 order by created_at"
+      }
     ]
   }
 ]

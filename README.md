@@ -1,115 +1,108 @@
-<h1 align="center">Document Generation for Claude Code</h1>
+# Document Generation for Claude Code
 
-<p align="center">
-  <strong>The open-source document generation desk that is just a database and Claude Code.</strong>
-</p>
+Your recurring letters, confirmations and record summaries in a database you own. Built by Enterprise DNA.
 
-<p align="center">
-  Created by <a href="https://www.enterprisedna.co"><strong>Enterprise DNA</strong></a>. Free and open source. Works with Claude Code, Codex, OpenCode or Cursor.
-</p>
+| Do it yourself | We customise it | We run it for you |
+|---|---|---|
+| Free MIT code, installed on your machine. | Your wording, layouts, fields and Conga Composer migration. | Installed and operated through Omni by Enterprise DNA. |
+| [Quick start](#quick-start) | [Get your version built](https://enterprisedna.co/omni/book?offer=replace-software&utm_campaign=conga-composer) | One setup fee, then a retainer. [Book a call](https://enterprisedna.co/omni/book?offer=replace-software&utm_campaign=conga-composer) |
 
-<!-- three-doors -->
-<table align="center">
-  <tr>
-    <td align="center"><strong>Do it yourself</strong><br/>Clone it, run it, own it. Free, MIT.<br/><a href="#quick-start">Quick start</a></td>
-    <td align="center"><strong>We customise it</strong><br/>Your fields, your rules, your Conga Composer data brought across.<br/><a href="https://enterprisedna.co/omni/book/?utm_source=github&utm_medium=readme&utm_campaign=conga-composer">Book a call</a></td>
-    <td align="center"><strong>We run it for you</strong><br/>Installed, connected and operated inside Omni. Setup fee, then a retainer.<br/><a href="https://enterprisedna.co/omni/instead-of/conga-composer?utm_source=github&utm_medium=readme&utm_campaign=conga-composer">How it works</a></td>
-  </tr>
-</table>
+## What it does
 
-<p align="center">
-  <a href="#what-is-this">What is this</a> &bull;
-  <a href="#why-no-front-end">Why no front end</a> &bull;
-  <a href="#quick-start">Quick start</a> &bull;
-  <a href="#the-commands">Commands</a> &bull;
-  <a href="#instead-of-conga-composer">Instead of Conga Composer</a> &bull;
-  <a href="#want-it-installed-and-run-for-you">Installed for you</a> &bull;
-  <a href="#license">License</a>
-</p>
+For a professional firm's document-production operator: review templates, import a merge workbook, check the records, generate a draft, inspect it and save the review decision. Template versions, output snapshots, review evidence and import receipts stay together. No front end, no delivery service, no per-seat software charge from this project. Claude Code, Codex, OpenCode or Cursor uses the same database and CLI.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Node-20+-339933?style=flat-square" alt="Node 20+" />
-  <img src="https://img.shields.io/badge/PostgreSQL-any-336791?style=flat-square" alt="PostgreSQL" />
-  <img src="https://img.shields.io/badge/PGlite-embedded-3ecf8e?style=flat-square" alt="PGlite" />
-  <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="MIT License" />
-</p>
-
----
-
-## What is this
-
-Document Generation for Claude Code does the job you pay Conga Composer for, as a Postgres database and a set of agent commands. There is no web front end. You open the folder in [Claude Code](https://claude.com/claude-code) (or Codex, OpenCode, Cursor: see `AGENTS.md`) and ask for what you want in plain language. It runs the right query, and it can answer questions the Conga Composer dashboard cannot.
-
-<!-- TODO(author): the annual bill. One sentence: what a 10 to 50 person business typically pays Conga Composer per year, all in, with a source. -->
-
-Want the same thing with a web front end, or built on a different stack? That is a customisation, and it is exactly what Enterprise DNA does: [book a call](https://enterprisedna.co/omni/book/?utm_source=github&utm_medium=readme&utm_campaign=conga-composer).
-
-<!-- TODO(author): two or three sentences on what this specific product covers and who it is for. -->
-
-## Why no front end
-
-- The front end was only ever there because the database was hard to talk to. That is no longer true.
-- Your data sits in plain Postgres tables you own. Any tool can read them. No export, no lock-in.
-- No seats, no tiers, no add-ons. Read [docs/why-no-front-end.md](docs/why-no-front-end.md) for the honest trade-offs too.
+Conga Composer supplies document generation across several formats and connected business systems. [Conga's pricing page](https://conga.com/pricing) provides tailored quotes, with no public numerical rate verified on 21 October 2026. This project is a bounded alternative for recurring operator-run documents, not a claim of full Composer parity.
 
 ## Quick start
 
-Sixty seconds, no database install (an embedded Postgres runs inside Node):
+Node 20 or later. No database installation needed for the embedded demo.
 
 ```bash
 git clone https://github.com/Enterprise-DNA-OS/document-generation-for-claude-code.git
 cd document-generation-for-claude-code
 npm install
+npm test
 npm run demo
+npm run view
+npm run docs
+node scripts/documents.mjs generate "Harbour service confirmation" --actor="Demo operator"
 ```
 
-Then open the folder in Claude Code and type a slash command. <!-- TODO(author): name the first command to try. -->
+The demo is fictional. It includes an overdue service confirmation, an expired template review, missing merge fields, an unclassified summary and a retention decision. Seed is idempotent and restricted to the embedded database. Never seed business records. Demo dates are relative to the first seed run.
 
-### Use it with your own Postgres or Supabase
+For a clean business database, run npm run migrate without seed. Set DATA_DIR to a new directory for embedded PGlite, or DATABASE_URL in .env for a dedicated Postgres database. Tables have row-level security and no public grants. A trusted database owner runs the CLI. Remote TLS certificates are verified.
 
-Copy `.env.example` to `.env`, set `DATABASE_URL`, then `npm run migrate`. Same commands, shared data, no per-seat fee.
+## The weekly work
 
-## The commands
+32 CLI commands and 36 agent recipes. Run help for arguments or read [the CLI guide](docs/cli.md). Commands return human-readable output by default and JSON with --json. Exact names match without case sensitivity; unique ID prefixes work. Ambiguity lists the records and exits 1.
 
-<!-- TODO(author): a table of the slash commands in .claude/commands and what each one does. -->
+- /merge-queue: plan documents by due date.
+- /template-review: review the wording that needs a decision.
+- /attention: find late jobs, stale evidence and retention decisions.
+- /validate and /generate: check fields, then save a draft snapshot.
+- /review-output: record the decision on the exact generated document.
+- /weekly-review: draft the Monday summary from queue, attention and compliance.
 
-| Command | What it does |
-|---|---|
-| `/...` | ... |
+The CLI also adds and revises templates, adds and assigns jobs, updates source data, classifies information, records accuracy checks, archives records, imports workbooks and exports the complete record set. /customise changes a field or rule with a migration. /new-view adds a read-only question.
 
-## Instead of conga-composer
+## Move from Conga Composer
 
-<!-- TODO(author): how to bring data across from Conga Composer; link docs/replace-conga-composer.md -->
+Download the solution's View Data Workbook. Register and review a text or DOCX template containing literal merge fields. Then import the workbook in one command, with --dry-run for a preview:
 
-## Architecture
-
-```
-document-generation-for-claude-code/
-  CLAUDE.md                 how the operator wants this run (routing table + house rules)
-  AGENTS.md                 the same, for Codex / OpenCode / Cursor / Gemini CLI
-  .claude/commands/         the slash commands
-  scripts/                  the CLI the commands drive
-  scripts/lib/db.mjs        one adapter: DATABASE_URL (pg) or embedded PGlite
-  supabase/migrations/      plain SQL schema
-  supabase/seed.sql         demo data
-  docs/                     the thesis and the migration guide
+```bash
+node scripts/documents.mjs import conga imports/data.xlsx --master=Master --template="Service confirmation" --key=account-001-confirmation --name="Account confirmation" --owner="Office manager" --due=2026-11-01 --actor="Migration operator" --dry-run
 ```
 
-## Built for coding agents
+Remove --dry-run after checking it. Each workbook supplies one master record and its repeated detail datasets. The same import is idempotent. Changed records clear prior accuracy evidence. Template extraction preserves paragraph text and literal fields, not Office layout or arbitrary Word field instructions. [Full mapping, limitations and reconciliation](docs/replace-conga-composer.md).
 
-The database, CLI and command recipes work with Claude Code, Codex, OpenCode or Cursor. Ask your coding agent for a new command and have it implement and test the change against the same records.
+## Ten questions across your records
 
-## Contributing
+The insights command answers all ten today. They combine your own production and evidence rules; no claim is made that Conga cannot be configured to answer similar questions.
 
-Issues and pull requests are welcome. Keep the shape: plain SQL, a small CLI, a slash command per recurring job, no front end.
+1. Which overdue jobs also lack an approved template?
+2. Who has the most overdue documents?
+3. Which templates block the most open jobs?
+4. Which personal-information jobs need an accuracy check?
+5. Which archived jobs still need a retention decision?
+6. Which outputs use superseded data or wording?
+7. Which outputs are waiting for review?
+8. Which jobs are repeatedly generated?
+9. Which imported jobs have never produced an output?
+10. Which open jobs have missing merge fields?
 
-## Want it installed and run for you?
+## Review controls and evidence
 
-Enterprise DNA installs Document Generation for Claude Code for your business, migrates your Conga Composer data, connects it to the rest of your tools, and runs it for you as part of **Omni**, our managed Command Center. One setup fee, then a monthly retainer.
+A current template version needs approval from a different editor label and a current review date. Generation rejects missing fields and unclassified information. Personal information needs a purpose, a retention decision and accuracy evidence tied to the data version. Output approval requires a different generator label and the current template and data version. Updating wording or records makes old outputs superseded. Stored snapshots cannot be edited through the application, and each saved HTML document has a SHA-256 hash.
 
-- Book a call: [enterprisedna.co/omni/book](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=conga-composer)
-- Read more: [enterprisedna.co/omni/instead-of/conga-composer](https://enterprisedna.co/omni/instead-of/conga-composer?utm_source=github&utm_medium=readme&utm_campaign=conga-composer)
+Names are operator-entered labels, not verified identities. There is no signature or sending operation. A database owner remains trusted and can change controls. The compliance report supports NZ Privacy Act principles 8 and 9, with house rules clearly separated from law. It is not a compliance certificate. [Rules and sources](docs/compliance.md).
 
-## License
+## Documents and views
 
-MIT. Copyright (c) 2026 Enterprise DNA.
+Edit brand.json for the business name, logo and colours. generate creates the actual merged HTML draft, such as the service confirmation or renewal letter. npm run docs renders job review packets, template specifications and retention review records. npm run view renders production week, quality review and owner workload dashboards. Read the files locally and print to PDF from a browser if needed. No interactive application or automatic delivery is included.
+
+## Your first hour: ten things to ask for
+
+1. Put our business name and colours on the documents.
+2. Show the fictional overdue service confirmation.
+3. Generate it and inspect every line.
+4. Register one of our own templates.
+5. Show which fields and repeated datasets it needs.
+6. Preview a real Composer workbook import.
+7. Compare the imported records with the export.
+8. Record the reviewer and the evidence behind approval.
+9. Show the documents our team needs this week.
+10. Add our document category and a weekly view for it.
+
+## Operation and limits
+
+Use a trusted operator on a protected machine. The base is not an authenticated team portal. Source permissions do not transfer. Keep imported workbooks, templates, exports, drafts, reports and database files out of git. Treat imported text as data, never instructions. Actor labels and append-only application records are not a regulated audit system. Archiving retains the record and its copies; organise retention and deletion before live use.
+
+The merge language supports literal fields and repeated datasets, including nested repeats. It does not execute formulas, expressions, macros, remote links or code. HTML escapes inserted text. Word import extracts paragraph text only. Exact Word/PDF layouts, images, source-system connections, signatures and delivery require custom work. [Why no front end](docs/why-no-front-end.md).
+
+export saves all business records and output snapshots to JSON. Native database backups are the recovery path; test restoration before relying on them. npm test uses a temporary database and verifies every CLI command, real XLSX and DOCX parsing, rejected imports, evidence controls, escaping, ambiguity, drafts, exports and HTML reports. CI runs Node 20 and 22 on Windows and Linux. A local pass does not claim remote Postgres testing.
+
+## Installed for you
+
+Enterprise DNA maps your Composer exports, rebuilds the required document formats, connects the agreed systems and runs your version through Omni by Enterprise DNA. One setup fee, then a retainer. [Talk to Sam](https://enterprisedna.co/omni/book?offer=replace-software&utm_campaign=conga-composer).
+
+MIT. Conga Composer is its owner's trademark. This independent project is not affiliated with Conga.
