@@ -1,3 +1,7 @@
+---
+description: "Document desk: workload"
+---
+
 # /workload
 
 Run node scripts/documents.mjs workload.

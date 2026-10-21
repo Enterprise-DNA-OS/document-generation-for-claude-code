@@ -1,3 +1,7 @@
+---
+description: "Document desk: archive template"
+---
+
 # /archive-template
 
 Run node scripts/documents.mjs archive-template.

@@ -1,3 +1,7 @@
+---
+description: "Document desk: archive"
+---
+
 # /archive
 
 Run node scripts/documents.mjs archive.

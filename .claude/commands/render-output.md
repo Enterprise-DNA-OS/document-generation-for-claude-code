@@ -1,3 +1,7 @@
+---
+description: "Document desk: render output"
+---
+
 # /render-output
 
 Run node scripts/documents.mjs render-output.

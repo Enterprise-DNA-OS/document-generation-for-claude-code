@@ -1,3 +1,7 @@
+---
+description: "Document desk: merge queue"
+---
+
 # /merge-queue
 
 Run node scripts/documents.mjs merge-queue.

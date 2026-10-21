@@ -1,3 +1,7 @@
+---
+description: "Document desk: validate"
+---
+
 # /validate
 
 Run node scripts/documents.mjs validate.

@@ -1,3 +1,7 @@
+---
+description: "Document desk: generate"
+---
+
 # /generate
 
 Run node scripts/documents.mjs generate.

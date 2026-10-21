@@ -1,3 +1,7 @@
+---
+description: "Document desk: outputs"
+---
+
 # /outputs
 
 Run node scripts/documents.mjs outputs.

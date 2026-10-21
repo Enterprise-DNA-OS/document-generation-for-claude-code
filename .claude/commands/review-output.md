@@ -1,3 +1,7 @@
+---
+description: "Document desk: review output"
+---
+
 # /review-output
 
 Run node scripts/documents.mjs review-output.

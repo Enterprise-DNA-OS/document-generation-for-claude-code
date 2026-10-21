@@ -1,3 +1,7 @@
+---
+description: "Document desk: help"
+---
+
 # /help
 
 Run node scripts/documents.mjs help.

@@ -1,3 +1,7 @@
+---
+description: "Document desk: assign"
+---
+
 # /assign
 
 Run node scripts/documents.mjs assign.

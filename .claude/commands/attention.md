@@ -1,3 +1,7 @@
+---
+description: "Document desk: attention"
+---
+
 # /attention
 
 Run node scripts/documents.mjs attention.

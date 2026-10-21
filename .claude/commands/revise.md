@@ -1,3 +1,7 @@
+---
+description: "Document desk: revise"
+---
+
 # /revise
 
 Run node scripts/documents.mjs revise.

@@ -1,3 +1,7 @@
+---
+description: "Document desk: job"
+---
+
 # /job
 
 Run node scripts/documents.mjs job.

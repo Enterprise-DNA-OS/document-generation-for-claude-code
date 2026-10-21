@@ -1,3 +1,7 @@
+---
+description: "Document desk: imports"
+---
+
 # /imports
 
 Run node scripts/documents.mjs imports.

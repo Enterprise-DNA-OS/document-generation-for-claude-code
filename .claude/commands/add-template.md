@@ -1,3 +1,7 @@
+---
+description: "Document desk: add template"
+---
+
 # /add-template
 
 Run node scripts/documents.mjs add-template.

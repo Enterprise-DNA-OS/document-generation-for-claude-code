@@ -1,3 +1,7 @@
+---
+description: "Document desk: insights"
+---
+
 # /insights
 
 Run node scripts/documents.mjs insights.

@@ -1,3 +1,7 @@
+---
+description: "Document desk: classify"
+---
+
 # /classify
 
 Run node scripts/documents.mjs classify.

@@ -1,3 +1,7 @@
+---
+description: "Document desk: weekly review"
+---
+
 # /weekly-review
 
 Run node scripts/documents.mjs weekly-review.

@@ -1,3 +1,7 @@
+---
+description: "Document desk: activity"
+---
+
 # /activity
 
 Run node scripts/documents.mjs activity.

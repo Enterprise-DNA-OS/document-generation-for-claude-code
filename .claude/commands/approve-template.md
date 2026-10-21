@@ -1,3 +1,7 @@
+---
+description: "Document desk: approve template"
+---
+
 # /approve-template
 
 Run node scripts/documents.mjs approve-template.

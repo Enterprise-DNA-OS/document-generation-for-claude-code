@@ -1,3 +1,7 @@
+---
+description: "Document desk: add"
+---
+
 # /add
 
 Run node scripts/documents.mjs add.

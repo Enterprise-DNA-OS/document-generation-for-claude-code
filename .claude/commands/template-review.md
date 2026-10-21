@@ -1,3 +1,7 @@
+---
+description: "Document desk: template review"
+---
+
 # /template-review
 
 Run node scripts/documents.mjs template-review.

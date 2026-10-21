@@ -1,3 +1,7 @@
+---
+description: "Document desk: draft review"
+---
+
 # /draft-review
 
 Run node scripts/documents.mjs draft-review.

@@ -1,3 +1,7 @@
+---
+description: "Document desk: check accuracy"
+---
+
 # /check-accuracy
 
 Run node scripts/documents.mjs check-accuracy.

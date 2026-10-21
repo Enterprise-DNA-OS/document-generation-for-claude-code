@@ -1,3 +1,7 @@
+---
+description: "Document desk: compliance"
+---
+
 # /compliance
 
 Run node scripts/documents.mjs compliance.

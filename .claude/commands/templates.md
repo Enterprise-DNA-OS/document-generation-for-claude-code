@@ -1,3 +1,7 @@
+---
+description: "Document desk: templates"
+---
+
 # /templates
 
 Run node scripts/documents.mjs templates.
